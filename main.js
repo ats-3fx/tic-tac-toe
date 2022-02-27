@@ -16,4 +16,8 @@ ctx.moveTo(margin + wl, margin);
 ctx.lineTo(margin + wl, h - margin);
 ctx.moveTo(margin + wl * 2, margin);
 ctx.lineTo(margin + wl * 2, h - margin);
+ctx.moveTo(margin, margin + hl);
+ctx.lineTo(w - margin, margin + hl);
+ctx.moveTo(margin, margin + hl * 2);
+ctx.lineTo(w - margin, margin + hl * 2);
 ctx.stroke();
