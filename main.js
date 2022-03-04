@@ -25,8 +25,8 @@ ctx.stroke();
 
 const x = 0;
 const y = 0;
-const centerX = w/2;
-const centerY = h/2;
+const centerX = w/2 + wl * x;
+const centerY = h/2 + hl * y;
 const radious = wl * 0.4;
 
 //円
@@ -41,3 +41,4 @@ ctx.lineTo(centerX + wl/2 * 0.8, centerY - hl/2 * 0.8);
 ctx.moveTo(centerX - wl/2 * 0.8, centerY - hl/2 * 0.8);
 ctx.lineTo(centerX + wl/2 * 0.8, centerY + hl/2 * 0.8);
 ctx.stroke();
+//const size = wl * 0.8などを追加してもよかった
