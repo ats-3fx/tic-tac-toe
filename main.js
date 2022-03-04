@@ -11,6 +11,7 @@ const hl = hL/3;
 ctx.fillStyle = "rgb(0, 120, 210)";
 ctx.fillRect(0, 0, w, h);
 
+//区分分け
 ctx.beginPath();
 ctx.moveTo(margin + wl, margin);
 ctx.lineTo(margin + wl, h - margin);
@@ -28,6 +29,15 @@ const centerX = w/2;
 const centerY = h/2;
 const radious = wl * 0.4;
 
+//円
 ctx.beginPath();
 ctx.arc(centerX, centerY, radious, 0, 2 * Math.PI);
+ctx.stroke();
+
+//バツ
+ctx.beginPath();
+ctx.moveTo(centerX - wl/2 * 0.8, centerY + hl/2 * 0.8);
+ctx.lineTo(centerX + wl/2 * 0.8, centerY - hl/2 * 0.8);
+ctx.moveTo(centerX - wl/2 * 0.8, centerY - hl/2 * 0.8);
+ctx.lineTo(centerX + wl/2 * 0.8, centerY + hl/2 * 0.8);
 ctx.stroke();
