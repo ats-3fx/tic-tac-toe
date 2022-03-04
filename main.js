@@ -23,22 +23,24 @@ ctx.moveTo(margin, margin + hl * 2);
 ctx.lineTo(w - margin, margin + hl * 2);
 ctx.stroke();
 
-const x = 0;
-const y = 0;
-const centerX = w/2 + wl * x;
-const centerY = h/2 + hl * y;
-const radious = wl * 0.4;
+check(0, 0);
+check(1, 0);
+function check(x, y){
+    const centerX = w/2 + wl * x;
+    const centerY = h/2 + hl * y;
+    const radious = wl * 0.4;
 
-//円
-ctx.beginPath();
-ctx.arc(centerX, centerY, radious, 0, 2 * Math.PI);
-ctx.stroke();
+    //円
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radious, 0, 2 * Math.PI);
+    ctx.stroke();
 
-//バツ
-ctx.beginPath();
-ctx.moveTo(centerX - wl/2 * 0.8, centerY + hl/2 * 0.8);
-ctx.lineTo(centerX + wl/2 * 0.8, centerY - hl/2 * 0.8);
-ctx.moveTo(centerX - wl/2 * 0.8, centerY - hl/2 * 0.8);
-ctx.lineTo(centerX + wl/2 * 0.8, centerY + hl/2 * 0.8);
-ctx.stroke();
-//const size = wl * 0.8などを追加してもよかった
+    //バツ
+    ctx.beginPath();
+    ctx.moveTo(centerX - wl/2 * 0.8, centerY + hl/2 * 0.8);
+    ctx.lineTo(centerX + wl/2 * 0.8, centerY - hl/2 * 0.8);
+    ctx.moveTo(centerX - wl/2 * 0.8, centerY - hl/2 * 0.8);
+    ctx.lineTo(centerX + wl/2 * 0.8, centerY + hl/2 * 0.8);
+    ctx.stroke();
+    //const size = wl * 0.8などを追加してもよかった
+}
