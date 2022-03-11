@@ -23,24 +23,25 @@ ctx.moveTo(margin, margin + hl * 2);
 ctx.lineTo(w - margin, margin + hl * 2);
 ctx.stroke();
 
-check(0, 0);
-check(1, 0);
-function check(x, y){
+function check(mark, x, y){
     const centerX = w/2 + wl * x;
     const centerY = h/2 + hl * y;
     const radious = wl * 0.4;
+    const size = wl * 0.8;
 
-    //円
+    if(mark=="maru"){
     ctx.beginPath();
     ctx.arc(centerX, centerY, radious, 0, 2 * Math.PI);
     ctx.stroke();
+    }
 
-    //バツ
+    if(mark=="batsu"){
     ctx.beginPath();
-    ctx.moveTo(centerX - wl/2 * 0.8, centerY + hl/2 * 0.8);
-    ctx.lineTo(centerX + wl/2 * 0.8, centerY - hl/2 * 0.8);
-    ctx.moveTo(centerX - wl/2 * 0.8, centerY - hl/2 * 0.8);
-    ctx.lineTo(centerX + wl/2 * 0.8, centerY + hl/2 * 0.8);
+    ctx.moveTo(centerX - size, centerY + size);
+    ctx.lineTo(centerX + size, centerY - size);
+    ctx.moveTo(centerX - size, centerY - size);
+    ctx.lineTo(centerX + size, centerY + size);
     ctx.stroke();
-    //const size = wl * 0.8などを追加してもよかった
+    }
 }
+check("maru", 0, 0);
