@@ -1,3 +1,7 @@
+const result = document.getElementById("result");
+const resultText = document.createTextNode("");
+result.appendChild(resultText);
+
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const w = 500;
@@ -139,6 +143,16 @@ canvas.addEventListener("click", (e) => {
                 }
                 console.log(`gameover : ${gameover}`);
                 console.log(`win : ${win}`);
+
+                if(gameover){
+                    if(win == "maru"){
+                        resultText.data = "Maru win!!"
+                    }else if(win == "batsu"){
+                        resultText.data = "Batsu win!!"
+                    }else{
+                        resultText.data = "Draw"
+                    }
+                }
 
                 maru = !maru
                 console.log(checked);
