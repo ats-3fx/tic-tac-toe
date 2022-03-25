@@ -45,31 +45,38 @@ function check(mark, x, y) {
     }
 }
 
-let xs = [0, 1, 2];
-let ys = [0, 1, 2];
+const xs = [0, 1, 2];
+const ys = [0, 1, 2];
 const x1s = xs.map((x) => margin + x * wl);
-const x2s = xs.map((x) => margin + (x + 1) * wl );
+const x2s = xs.map((x) => margin + (x + 1) * wl);
 const y1s = ys.map((y) => margin + y * hl);
-const y2s = ys.map((y) => margin + (y + 1) * hl );
+const y2s = ys.map((y) => margin + (y + 1) * hl);
+let maru = ture;
 
 canvas.addEventListener("click", (e) => {
     console.log(`x: ${e.clientX} y: ${e.clientY}`);
     xs.forEach((x, index) => {
         ys.forEach((y, index2) => {
             if (e.clientX < x2s[index] && e.clientX > x1s[index] && e.clientY < y2s[index2] && e.clientY > y1s[index2]) {
-                check("batsu", x - 1, y -1);
+                if (maru) {
+                    check("maru", x - 1, y - 1);
+                    maru = false;
+                } else {
+                    check("batsu", x - 1, y - 1);
+                    maru = true;
+                }
             }
         });
     });
 });
 
 console.log(`hello ${Math.pow(14852, 2)}`);
-function Hello(name){
+function Hello(name) {
     return `Hello ${name}`
 }
-console.log (Hello("Ats"));
+console.log(Hello("Ats"));
 
 const smashBro = ["mario", "samus", "joker"]
-smashBro.forEach((sB)=>{
+smashBro.forEach((sB) => {
     console.log(sB);
 });
