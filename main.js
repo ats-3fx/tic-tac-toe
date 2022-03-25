@@ -57,13 +57,19 @@ const checked = [
     [false, false, false],
     [false, false, false]
 ];
+let gameover = false;
+let win = null;
 
 canvas.addEventListener("click", (e) => {
+    if(gameover){
+        return;
+    }
+
     console.log(`x: ${e.clientX} y: ${e.clientY}`);
     xs.forEach((x, index) => {
         ys.forEach((y, index2) => {
             if (e.clientX < x2s[index] && e.clientX > x1s[index] && e.clientY < y2s[index2] && e.clientY > y1s[index2]) {
-                if(checked[y][x]){
+                if (checked[y][x]) {
                     return;
                 }
                 if (maru) {
@@ -75,49 +81,64 @@ canvas.addEventListener("click", (e) => {
                 }
 
                 let yoko = true
-                for(let i = 0; i < 3; i++){
-                    if(!yoko){
+                for (let i = 0; i < 3; i++) {
+                    if (!yoko) {
                         break;
                     }
-                    if(maru){
+                    if (maru) {
                         yoko = checked[y][i] == "maru";
-                    }else{
+                    } else {
                         yoko = checked[y][i] == "batsu";
                     }
                 }
                 console.log(`yoko : ${yoko}`);
 
                 let tate = true
-                for(let i = 0; i < 3; i++){
-                    if(!tate){
+                for (let i = 0; i < 3; i++) {
+                    if (!tate) {
                         break;
                     }
-                    if(maru){
+                    if (maru) {
                         tate = checked[i][x] == "maru";
-                    }else{
+                    } else {
                         tate = checked[i][x] == "batsu";
                     }
                 }
                 console.log(`tate : ${tate}`);
 
                 let naname = true;
-                if(maru){
+                if (maru) {
                     naname = checked[1][1] == "maru"
-                    && (
-                    (checked[0][0] == "maru" && checked[2][2] == "maru")
-                    ||
-                    (checked[0][2] == "maru" && checked[2][0] == "maru")
-                    );
-                }else{
+                        && (
+                            (checked[0][0] == "maru" && checked[2][2] == "maru")
+                            ||
+                            (checked[0][2] == "maru" && checked[2][0] == "maru")
+                        );
+                } else {
                     naname = checked[1][1] == "batsu"
-                    && (
-                    (checked[0][0] == "batsu" && checked[2][2] == "batsu")
-                    ||
-                    (checked[0][2] == "batsu" & checked[2][0] == "batsu")
-                    );
+                        && (
+                            (checked[0][0] == "batsu" && checked[2][2] == "batsu")
+                            ||
+                            (checked[0][2] == "batsu" & checked[2][0] == "batsu")
+                        );
                 }
 
                 console.log(`naname : ${naname}`);
+
+                if(tate || yoko || naname){
+                    gameover = true;
+                    if(maru){
+                        win = "maru";
+                    }else{
+                        win = "batsu";
+                    }
+                }
+
+                if(checked.map(l=>l.every(a => a)).every(a => a)){
+                    gameover = true;
+                }
+                console.log(`gameover : ${gameover}`);
+                console.log(`win : ${win}`);
 
                 maru = !maru
                 console.log(checked);
