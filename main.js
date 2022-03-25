@@ -68,13 +68,58 @@ canvas.addEventListener("click", (e) => {
                 }
                 if (maru) {
                     check("maru", x - 1, y - 1);
-                    maru = false;
                     checked[y][x] = "maru";
                 } else {
                     check("batsu", x - 1, y - 1);
-                    maru = true;
                     checked[y][x] = "batsu";
                 }
+
+                let yoko = true
+                for(let i = 0; i < 3; i++){
+                    if(!yoko){
+                        break;
+                    }
+                    if(maru){
+                        yoko = checked[y][i] == "maru";
+                    }else{
+                        yoko = checked[y][i] == "batsu";
+                    }
+                }
+                console.log(`yoko : ${yoko}`);
+
+                let tate = true
+                for(let i = 0; i < 3; i++){
+                    if(!tate){
+                        break;
+                    }
+                    if(maru){
+                        tate = checked[i][x] == "maru";
+                    }else{
+                        tate = checked[i][x] == "batsu";
+                    }
+                }
+                console.log(`tate : ${tate}`);
+
+                let naname = true;
+                if(maru){
+                    naname = checked[1][1] == "maru"
+                    && (
+                    (checked[0][0] == "maru" && checked[2][2] == "maru")
+                    ||
+                    (checked[0][2] == "maru" && checked[2][0] == "maru")
+                    );
+                }else{
+                    naname = checked[1][1] == "batsu"
+                    && (
+                    (checked[0][0] == "batsu" && checked[2][2] == "batsu")
+                    ||
+                    (checked[0][2] == "batsu" & checked[2][0] == "batsu")
+                    );
+                }
+
+                console.log(`naname : ${naname}`);
+
+                maru = !maru
                 console.log(checked);
             }
         });
