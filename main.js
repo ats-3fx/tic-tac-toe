@@ -62,3 +62,14 @@ canvas.addEventListener("click", (e) => {
         });
     });
 });
+
+console.log(`hello ${Math.pow(14852, 2)}`);
+function Hello(name){
+    return `Hello ${name}`
+}
+console.log (Hello("Ats"));
+
+const smashBro = ["mario", "samus", "joker"]
+smashBro.forEach((sB)=>{
+    console.log(sB);
+});
