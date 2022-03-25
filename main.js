@@ -51,13 +51,21 @@ const x1s = xs.map((x) => margin + x * wl);
 const x2s = xs.map((x) => margin + (x + 1) * wl);
 const y1s = ys.map((y) => margin + y * hl);
 const y2s = ys.map((y) => margin + (y + 1) * hl);
-let maru = ture;
+let maru = true;
+const checked = [
+    [false, false, false],
+    [false, false, false],
+    [false, false, false]
+];
 
 canvas.addEventListener("click", (e) => {
     console.log(`x: ${e.clientX} y: ${e.clientY}`);
     xs.forEach((x, index) => {
         ys.forEach((y, index2) => {
             if (e.clientX < x2s[index] && e.clientX > x1s[index] && e.clientY < y2s[index2] && e.clientY > y1s[index2]) {
+                if(checked[y][x]){
+                    return;
+                }
                 if (maru) {
                     check("maru", x - 1, y - 1);
                     maru = false;
@@ -65,6 +73,7 @@ canvas.addEventListener("click", (e) => {
                     check("batsu", x - 1, y - 1);
                     maru = true;
                 }
+                checked[y][x] = true;
             }
         });
     });
